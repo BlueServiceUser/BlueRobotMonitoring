@@ -1,0 +1,14 @@
+
+[Unit]
+Description=Blue Robot Sensor Suite
+After=network-online.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/pi/BluePiSensor/sensehat_program.py
+WorkingDirectory=/home/pi/BluePiSensor/
+User=pi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

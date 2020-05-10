@@ -1,0 +1,4 @@
+Rpi.bme280
+azure-iot-device
+RPi.GPIO
+sense-hat

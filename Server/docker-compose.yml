@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    volumes:
+    - ./data/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment: 
+      - EVENTHUB_NAMESPACE=ihsuproddbres003dednamespace
+      - EVENTHUB_NAME=iothub-ehub-bluerobotm-657980-3f3842d5bf
+      - EVENTHUB_CONNECTION_STRING=Endpoint=sb://ihsuproddbres003dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=y4c8Gdwe8mrUNxrslqfHXEfuFsMuw8AqRS6xoa6HJhA=;EntityPath=iothub-ehub-bluerobotm-657980-3f3842d5bf
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+    ports:
+      - '8125:8125/udp'
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - ./data/influxdb:/var/lib/influxdb
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    depends_on:
+      - influxdb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./data/grafana/data:/var/lib/grafana
+      - ./data/grafana/provisioning/:/etc/grafana/provisioning/
+    restart: always
+
+  chronograf:
+    image: chronograf:latest
+    container_name: chronograf
+    ports:
+      - "8888:8888"
+    links:
+      - influxdb
+volumes:
+  monitoring_data:
