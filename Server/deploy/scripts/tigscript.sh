@@ -14,19 +14,19 @@ apt-get install unzip -y
 
 cd /home/
 
-if [ -e ConfigFiles.* ];
+if [ -e Configfiles.* ];
 then
-  if [ -d /home/ConfigFiles ];
+  if [ -d /home/Configfiles ];
   then
-        rm -rf ConfigFiles.*
-	rm -rf /home/ConfigFiles
+        rm -rf Configfiles.*
+	rm -rf /home/Configfiles
 	echo "directory delete"
   fi
 fi
 wget $configfile
-unzip ConfigFiles.zip -d /home/ConfigFiles/
+unzip ConfigFiles.zip -d /home/Configfiles/
 
 
-HOME=/root ansible-playbook /home/ConfigFiles/ansible/docker_install.yml  --extra-vars "HostIP=$HostIP" -vvv
+HOME=/root ansible-playbook /home/Configfiles/ansible/docker_install.yml  --extra-vars "HostIP=$HostIP" -vvv
 
 
