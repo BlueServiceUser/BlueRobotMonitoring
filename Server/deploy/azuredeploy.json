@@ -46,11 +46,9 @@
   "variables": {
     "resourcePrefix": "tig",
     "storageAccountName": "[concat(variables('resourcePrefix'), uniquestring(resourceGroup().id))]",
-    "OSDiskName": "[concat(variables('resourcePrefix'), 'OSDisk')]",
     "nicName": "[concat(variables('resourcePrefix'), 'VMNic')]",
     "subnetName": "[concat(variables('resourcePrefix'), 'Subnet')]",
     "publicIPAddressName": "[concat(variables('resourcePrefix'), 'PublicIP')]",
-    "vmStorageAccountContainerName": "vhds",
     "vmName": "[concat(variables('resourcePrefix'), 'VM')]",
     "vmExtensionName": "[concat(variables('resourcePrefix'), 'Init')]",
     "virtualNetworkName": "[concat(variables('resourcePrefix'), 'VNET')]",

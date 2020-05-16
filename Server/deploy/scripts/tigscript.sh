@@ -24,7 +24,7 @@ then
   fi
 fi
 wget $configfile
-unzip ConfigFiles.zip -d /home/Configfiles/
+unzip Configfiles.zip -d /home/Configfiles/
 
 
 HOME=/root ansible-playbook /home/Configfiles/ansible/docker_install.yml  --extra-vars "HostIP=$HostIP" -vvv
