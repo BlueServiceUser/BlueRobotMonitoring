@@ -1,0 +1,2 @@
+#Create app
+az webapp create --resource-group BlueMonitoring --plan ASPBlueRobotMonitoring --name BlueRobotMonitoringDev --multicontainer-config-type compose --multicontainer-config-file docker-compose-azure.yml
